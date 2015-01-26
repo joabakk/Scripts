@@ -5,6 +5,8 @@ with open("/home/pi/kplexlogs/example.log", "r") as fo:
         msg = pynmea2.parse(line)
         print repr(msg)
         #print msg.type
+        #print msg.sentence_type
+        #print msg.sentence
         #print msg.NMEASentenceType
         #print msg.cls
         #print msg.TalkerSentence
