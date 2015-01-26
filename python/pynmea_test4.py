@@ -5,6 +5,7 @@ with open("/home/pi/kplexlogs/example.log", "r") as fo:
         #todo: strip off any timestamp/source tag
         #split(str="", num=string.count(str))
   |     #Splits string according to delimiter str (space if not provided) and returns list of substrings; split into at most num substrings if given
+        #http://amsa-code.github.io/risky/ais/cobertura/au.gov.amsa.util.nmea.NmeaMessageParser.html
         #tags = split(line="//")
         #print tags
         msg = pynmea2.parse(line)
