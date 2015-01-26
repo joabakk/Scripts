@@ -2,6 +2,7 @@ import pynmea2
 with open("/home/pi/kplexlogs/example.log", "r") as fo:
   for line in fo:
         #print "Read: %s" % (line)
+        #todo: strip off any timestamp/source tag
         msg = pynmea2.parse(line)
         print repr(msg)
         #print msg.type
