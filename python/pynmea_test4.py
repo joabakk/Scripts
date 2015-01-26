@@ -6,7 +6,7 @@ with open("/home/pi/kplexlogs/example.log", "r") as fo:
         #split(str="", num=string.count(str))
   |     #Splits string according to delimiter str (space if not provided) and returns list of substrings; split into at most num substrings if given
         #http://amsa-code.github.io/risky/ais/cobertura/au.gov.amsa.util.nmea.NmeaMessageParser.html
-        #tags = split(line="//")
+        #tags = split(line="\") #looks like \s:log*71\ or \c:1387191186*0E\ or \s:kplex,c:1387191537*0F\ combined??
         #print tags
         msg = pynmea2.parse(line)
         print repr(msg)
