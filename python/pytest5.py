@@ -1,4 +1,5 @@
 import pynmea2 
+import time
 with open("/home/pi/kplexlogs/nmea.log.1", "r") as fo:
   N=2000
   for i in range(N):
@@ -11,12 +12,13 @@ with open("/home/pi/kplexlogs/nmea.log.1", "r") as fo:
         #\s:kplex,c:1387191537*0F\ combined?? print tags
         
 	line = tags[-1]#last item in list is nmea sentence
-	if line[0] == '$' and line[0].count('*') == 1: #is there any point of passing the sentence to pynmea?
+	if line[0] == '$' and line.count('*') == 1: #is there any point of passing the sentence to pynmea?
 		msg = pynmea2.parse(line)
         	print repr(msg) #show all values with name
 	        try :
         		#print msg.sentence_type
 			      if msg.sentence_type == 'HDM':
+				      hdmtime = str(time.time())
 				      mag_heading = msg.heading
 				      print "heading M: ", mag_heading
    		      elif msg.sentence_type == 'HDT':
