@@ -1,6 +1,7 @@
 import pynmea2 
 import re
 import time
+import serial
 
 #variables
 windspeed = 1
@@ -9,17 +10,24 @@ boatspeed = 1
 rateofturn = 1
 vmg = 1
 rpm = 1
+ser = serial.Serial(
+    port='/dev/pty23',\
+    baudrate=9600,\
+    parity=serial.PARITY_NONE,\
+    stopbits=serial.STOPBITS_ONE,\
+    bytesize=serial.EIGHTBITS,\
+        timeout=0)
 
-with open("/home/pi/kplexlogs/nmea.log.1", "r") as fo:
 #with open("/home/pi/kplexlogs/example.log", "r") as fo:
   
   #for line in fo: #if reading all lines
-  OR:
-  N=200
-  for i in range(N):
-	print "line no: %s" % (i)
+  #OR:
+  #N=200
+  #for i in range(N):
+	#print "line no: %s" % (i)
 
-	line=fo.next().strip()
+#	line=fo.next().strip()
+	line = ser.readline()
         print "Read: %s" % (line) 
 	#todo: strip off any timestamp/source tag 
         #split(str="", num=string.count(str))
