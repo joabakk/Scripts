@@ -9,15 +9,17 @@ boatspeed = 1
 rateofturn = 1
 vmg = 1
 rpm = 1
+mag_heading = 1
+true_heading = 1
 
-with open("/home/pi/kplexlogs/nmea.log.1", "r") as fo:
-#with open("/home/pi/kplexlogs/example.log", "r") as fo:
+#with open("/home/pi/kplexlogs/nmea.log.1", "r") as fo:
+with open("/home/pi/kplexlogs/example.log", "r") as fo:
   
-  #for line in fo: #if reading all lines
-  OR:
-  N=200
-  for i in range(N):
-	print "line no: %s" % (i)
+  for line in fo: #if reading all lines
+  #OR:
+  #N=200
+  #for i in range(N):
+	#print "line no: %s" % (i)
 
 	line=fo.next().strip()
         print "Read: %s" % (line) 
@@ -64,13 +66,13 @@ with open("/home/pi/kplexlogs/nmea.log.1", "r") as fo:
         	                print "RPM: ", rpm
 		#print msg.sentence_type
                 	elif msg.sentence_type == 'VPW':
- 				if msg.speed_kn != '':	
-			             	vmg = msg.speed_kn
-					vmgtime = str(time.time())
-                        	print "VMG: ", vmg, "+", msg.speed_kn
+		             	vmg = msg.speed_kn
+				vmgtime = str(time.time())
+                        	print "VMG: ", vmg
 			elif msg.sentence_type == 'MWV':
                                 winddir = msg.wind_angle
-				winddittime = str(time.time())
+				windspeed = msg.wind_speed
+				winddirtime = str(time.time())
                                 print "Wind angle rel: ", winddir
 			elif msg.sentence_type == 'VHW':
                                 boatspeed = msg.water_speed_knots
